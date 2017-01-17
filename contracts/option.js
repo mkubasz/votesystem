@@ -1,9 +1,12 @@
 class Options {
-  bool _yes = false;
-  bool _no = false;
-  bool _maybe = false;
+  contruct(){
+  this._yes = false;
+  this._no = false;
+  this._maybe = false;
+  }
+
   // 1 - yes, 0 - no, -1 - maybe
-  function getOption() {
+  getOption() {
     if(_yes)
       return 1;
     if(_no)
@@ -11,7 +14,7 @@ class Options {
     return -1;
   }
 
-  function setOption(const int option) {
+  setOption(option) {
     if(option === 1){
       _yes = true;
     }
