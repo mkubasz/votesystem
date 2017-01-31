@@ -12,5 +12,7 @@ module.exports = {
   rpc: {
     host: "localhost",
     port: 8545
+   // gasPrice: 1,
+    //gas: 4712388
   }
 };
