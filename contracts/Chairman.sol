@@ -10,8 +10,10 @@ contract Chairman {
   }
 
   function createCase(string _title, string _name, uint _duration) public {
-    Case c = new Case(_title, _duration, address(validation));
-    cases[_name] = c;
+    if(address(cases[_name]) == 0){
+      Case c = new Case(_title, _duration, address(validation));
+      cases[_name] = c;
+    }
   }
 
   function getCase(string _name) public returns(Case) {
@@ -86,9 +88,10 @@ contract Voter {
     if(weight >= _delegateWeight){
       weight -= _delegateWeight;
       return _delegateWeight;
-    }
-
-    return 0;
+    } 
+    if(address(delegateVoter) == 0)
+        return 0;
+    return delegateVoter.returnWeight(delegateWeight);
   }
 
   function getWeight() public returns(uint) {
